@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="rice"><br>
+<button id="run">Calulate</button>
+<div id="container"></div>
+</body>
+<script>
+  function getRice(rice) {
+    const water = rice * 1.1;
+    const vinegar = rice*0.1;
+    const sugar = vinegar;
+    const salt = 3 * rice / 500;
+
+    return {rice, water, vinegar, sugar, salt}
+  }
+
+  const button = document.getElementById('run');
+  const input = document.getElementById('rice');
+  const container = document.getElementById('container');
+  button.addEventListener('click', function() {
+    const value = input.value;
+    const data = getRice(value);
+    container.innerHTML = `
+    <table>
+        <tr>
+            <th>Rice</th>
+            <th>Water</th>
+            <th>Vinegar</th>
+            <th>Sugar</th>
+            <th>Salt</th>
+        </tr><tr>
+            <th>${data.rice}</th>
+            <th>${data.water}</th>
+            <th>${data.vinegar}</th>
+            <th>${data.sugar}</th>
+            <th>${data.salt}</th>
+        </tr>
+    </table>
+    `
+  })
+</script>
+</html>
